@@ -6,9 +6,9 @@ RUN git clone https://github.com/gohugoio/hugo.git
 WORKDIR /tmp/src/hugo
 RUN go install
 
-FROM golang:1.14-alpine
+FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
-COPY --from=builder /go/bin/hugo /go/bin
+COPY --from=builder /go/bin/hugo /bin
 WORKDIR /mnt/site
 ENTRYPOINT hugo server --bind "0.0.0.0" --renderToDisk
