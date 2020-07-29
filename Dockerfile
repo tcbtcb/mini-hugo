@@ -10,5 +10,6 @@ FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=builder /go/bin/hugo /bin
+ENV url=url
 WORKDIR /mnt/site
-ENTRYPOINT hugo server --bind "0.0.0.0" --renderToDisk
+ENTRYPOINT hugo server --baseURL $url --bind "0.0.0.0" --renderToDisk
