@@ -7,5 +7,5 @@ WORKDIR /tmp/src/hugo
 RUN CGO_ENABLED=1 go install --tags extended
 
 FROM golang:1.15-buster
-COPY --from=builder /go/bin/hugo /bin
+COPY --from=builder /go/bin/hugo /go/bin
 WORKDIR /mnt/site
