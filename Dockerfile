@@ -6,6 +6,6 @@ RUN git clone https://github.com/gohugoio/hugo.git
 WORKDIR /tmp/src/hugo
 RUN CGO_ENABLED=1 go install --tags extended
 
-FROM golang:1.15-buster
-COPY --from=builder /go/bin/hugo /go/bin
+FROM debian:buster-slim
+COPY --from=builder /go/bin/hugo /bin/
 WORKDIR /mnt/site
