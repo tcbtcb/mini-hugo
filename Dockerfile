@@ -6,8 +6,6 @@ RUN git clone https://github.com/gohugoio/hugo.git
 WORKDIR /tmp/src/hugo
 RUN CGO_ENABLED=1 go install --tags extended
 
-FROM alpine:latest
-RUN apk --no-cache add ca-certificates
-WORKDIR /root/
+FROM golang:1.15-buster
 COPY --from=builder /go/bin/hugo /bin
 WORKDIR /mnt/site
