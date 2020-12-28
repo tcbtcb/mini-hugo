@@ -1,5 +1,5 @@
-FROM golang:1.15-alpine AS builder
-RUN apk update && apk add git
+FROM golang:1.15-buster AS builder
+RUN apt-get update && apt-get install -y gcc
 RUN mkdir -p /tmp/src
 WORKDIR /tmp/src
 RUN git clone https://github.com/gohugoio/hugo.git
