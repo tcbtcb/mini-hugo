@@ -8,4 +8,4 @@ RUN CGO_ENABLED=1 go install --tags extended
 
 FROM debian:buster-slim
 COPY --from=builder /go/bin/hugo /bin/
-WORKDIR /mnt/site
+RUN apt-get update && apt-get install -y git
